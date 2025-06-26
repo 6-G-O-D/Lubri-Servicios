@@ -1,0 +1,312 @@
+:root {
+  --bg: #101820;
+  --card: #1a1f2b;
+  --accent: #00ffc3;
+  --text: #f5f5f5;
+  --dim: #888;
+  --btn-hover: rgb(0, 191, 166);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Ubuntu', sans-serif;
+  cursor: default;
+}
+
+input, select, textarea {
+  cursor: text;
+}
+
+.wizard-container {
+  max-width: 750px;
+  margin: 60px auto;
+  background: var(--card);
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 0 20px var(--accent);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 80px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 10px var(--accent));
+  animation: pulse 2s infinite;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.step {
+  flex: 1;
+  padding: 12px;
+  background: #222;
+  color: var(--dim);
+  text-align: center;
+  margin: 0 5px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  min-width: 80px;
+}
+
+.step.active {
+  background: var(--accent);
+  color: #000;
+  font-weight: bold;
+}
+
+.step-content {
+  display: none;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.step-content.active {
+  display: block;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  background: #0d0d0d;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.calendar-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.calendar-btn {
+  padding: 12px 20px;
+  background: #121820;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  color: var(--accent);
+  flex: 1 0 30%;
+  text-align: center;
+}
+
+.calendar-btn.selected {
+  background: var(--accent);
+  color: #000;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #0d0d0d;
+  color: var(--accent);
+  font-size: 14px;
+}
+
+td, th {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #1f1f1f;
+  cursor: pointer;
+}
+
+td.selected {
+  background: var(--accent);
+  color: #000;
+}
+
+.preview {
+  background: #121820;
+  border: 1px solid var(--accent);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.next-btn, .back-btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-right: 10px;
+}
+
+.next-btn:hover, .back-btn:hover {
+  background: var(--btn-hover);
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+.pulse-glow {
+  animation: pulse 2s infinite;
+}
+
+.glow-box {
+  box-shadow: 0 0 20px var(--accent);
+}
+
+@media (max-width: 600px) {
+  .wizard-container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .calendar-btn {
+    flex: 1 0 100%;
+  }
+
+  .steps {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step {
+    margin: 5px 0;
+    width: 100%;
+  }
+
+  table, td, th {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  input[type="text"] {
+    font-size: 14px;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .next-btn, .back-btn {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/* ====== Paso 2: Disponibilidad ====== */
+
+label {
+  display: block;
+  margin: 15px 0 8px;
+  font-weight: bold;
+  font-size: 16px;
+  color: var(--accent);
+  transition: 0.3s;
+}
+
+input[type="date"], select#horas {
+  width: 100%;
+  padding: 12px;
+  background: #0d0d0d;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  margin-bottom: 20px;
+}
+
+input[type="date"]:hover,
+select#horas:hover {
+  border-color: var(--btn-hover);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+input[type="date"]:focus,
+select#horas:focus {
+  outline: none;
+  border-color: var(--btn-hover);
+  box-shadow: 0 0 12px var(--btn-hover);
+  background-color: #111;
+}
+
+select#horas option {
+  background: #1a1f2b;
+  color: var(--accent);
+}
+
+/* Añade una animación de entrada al paso 2 */
+.step-content[data-step="2"] {
+  animation: slideIn 0.6s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* visibilidad en fondo oscuro */
+  cursor: pointer;
+  opacity: 1;
+}
+
+#botonPDF {
+  animation: pulse 2s infinite;
+  text-align: center;
+}
+
+a.next-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #000;
+  font-weight: bold;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: background 0.3s ease;
+}
+
+a.next-btn:hover {
+  background: var(--btn-hover);
+}

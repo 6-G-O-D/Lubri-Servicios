@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agendar Cita | Lubri-Servic</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="wizard-container animate-fade-in">
+    <header>
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" />
+      <h1>🛠️ Agendar Mantenimiento</h1>
+    </header>
+
+    <div class="steps">
+      <div class="step active" data-step="1">Datos del cliente</div>
+      <div class="step" data-step="2">Disponibilidad</div>
+      <div class="step" data-step="3">Vista previa</div>
+      <div class="step" data-step="4">Confirmación</div>
+    </div>
+
+    <form id="formulario">
+      <!-- Paso 1: Datos del cliente -->
+      <section class="step-content active data-sect" data-step="1">
+        <h2>🧾 Datos personales</h2>
+        <input type="text" id="nombre" placeholder="Nombre completo" required />
+        <input type="text" id="cedula" placeholder="Cédula de ciudadanía" required />
+        <input type="text" id="telefono" placeholder="Número de contacto" required />
+        <input type="text" id="placa" placeholder="Placa del vehículo" required />
+        <input type="text" id="marca" placeholder="Marca del vehículo" required />
+        <input type="text" id="modelo" placeholder="Modelo del vehículo" required />
+
+        <div class="calendar-options">
+          <div class="calendar-btn" data-calendario="Gmail">📧 Gmail</div>
+          <div class="calendar-btn" data-calendario="Outlook">📨 Outlook</div>
+          <div class="calendar-btn" data-calendario="Exchange">💼 Exchange</div>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="next-btn">Siguiente ➡️</button>
+        </div>
+      </section>
+
+      <!-- Paso 2: Disponibilidad -->
+      <section class="step-content" data-step="2">
+        <h2>📅 Selecciona tu disponibilidad</h2>
+        <label for="fecha">📆 Selecciona fecha:</label>
+        <input type="date" id="fecha" required />
+
+        <label for="horas">⏰ Selecciona hora:</label>
+        <select id="horas" name="hora" required>
+          <option value="">Selecciona hora</option>
+        </select>
+
+        <div class="btn-group">
+          <button type="button" class="back-btn">⬅️ Atrás</button>
+          <button type="button" class="next-btn">Siguiente ➡️</button>
+        </div>
+      </section>
+
+      <!-- Paso 3: Vista previa -->
+      <section class="step-content" data-step="3">
+        <h2>🔎 Vista previa de tu cita</h2>
+        <div id="vista-previa" class="preview glow-box"></div>
+        <div class="btn-group">
+          <button type="button" class="back-btn">⬅️ Atrás</button>
+          <button type="button" class="next-btn">✅ Confirmar</button>
+        </div>
+      </section>
+
+      <!-- Paso 4: Confirmación -->
+      <section class="step-content" data-step="4">
+        <h2>🎉 ¡Tu cita ha sido agendada!</h2>
+        <a id="botonPDF" class="next-btn" href="#" target="_blank" download style="display: none;">
+        📥 Descargar comprobante PDF
+        </a>
+        <p>📎 Enlace generado:</p>
+        <input id="enlaceCita" type="text" readonly />
+  
+        <!-- Nuevo botón para descarga del comprobante -->
+        
+
+        <button type="button" onclick="location.reload()">🔁 Volver al inicio</button>
+      </section>
+    </form>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
